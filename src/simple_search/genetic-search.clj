@@ -16,28 +16,26 @@
   [instance num]
   (for [i (range num) ] (add-score (core/random-answer instance))))
 
-
 (defn mutate-pop
   [population]
   (map  #(add-score (core/mutate-answer %))  population))
 
 (defn next-generation
   [population]
-  (let [candidates (concat population (mutate-pop population))]
-    (take (count population) (sort-by #(- (:score %)) candidates))))
-
+  (->> population
+      (concat (mutate-pop population))
+      (sort-by #(-> % :score - ))
+      (take (count population))))
 
 (defn mutate-search
   "generate an answer through randomly mutating a population"
   [instance evals]
-  (let [final-pop (nth (iterate next-generation (first-generation instance 100)) evals)]
-    (apply max-key :score final-pop)))
+  (let [start (first-generation instance 100)
+        generations (iterate next-generation start)
+        final-pop (nth generations evals)
+        bestest (apply max-key :score final-pop)]
+    bestest))
 
 (mutate-search knapPI_11_20_1000_4 200)
-
-
-
-
-
 
 ;; (next-generation (first-generation knapPI_13_20_1000_20 10 ))
