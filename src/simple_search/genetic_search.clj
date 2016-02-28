@@ -13,36 +13,23 @@
   [answer]
   (core/add-score core/penalized-score answer))
 
+
 (defn wild-type
   [instance]
   "generate lazy seq of random individuals"
   (repeatedly #(add-score (core/random-answer instance))))
 
 
-(take 10 (distinct (wild-type knapPI_11_20_1000_7)))
+(defn best
+  "take a population and return answer with highest score"
+  [population]
+  (apply max-key :score population))
 
-
-(defn get-distinct
-  "gets n distinct items from lazy seq of items"
-  [num lazyseq]
-
-  let [get-distinct #(distinct (take % lazyseq))
-       add-more (fn [items]
-                  (let [diff (- num (count items))
-                        new-items (concat items (get-distinct diff))]
-                    (if (< (count new-items) num)
-                      (recur new-items)
-                      new-items)))]
-         (add-more '()))
 
 (defn first-generation
   "generate num random answers for instance"
   [instance num]
   (take num (wild-type instance)))
-  ;(get-distinct num (wild-type instance)))
-
-
-(first-generation knapPI_11_20_1000_1 10)
 
 
 (defn mutate-pop
@@ -50,14 +37,15 @@
   [population]
   (map  #(add-score (core/mutate-answer %)) population))
 
+
 (defn modify-generation
   "create a new generation from a population by mutating it, and taking the best
-  n out of old and young combined, where n is population size"
+  n out of old and young combined, where n is population size. Population should be free of duplicates"
   [population mutator]
   (->> population
       (concat (mutator population))
-      (sort-by #(-> % :score - ))
-      distinct
+      (sort-by (comp - :score))
+      dedupe
       (take (count population))))
 
 
@@ -66,30 +54,59 @@
   [instance mutator evals]
   (let [start (first-generation instance 100)
         modify #(modify-generation % mutator)
-        generations (iterate modify start)
-        final-pop (nth generations evals)
-        bestest (apply max-key :score final-pop)]
-    bestest))
+        generatins (iterate modify start)
+        final-pop(nth generations evals)]
+    (best final-pp)))
 
- (mutate-search knapPI_11_20_1000_4 mutate-pop 100)
 
  (defn tournament
   [population num-competitors]
-  (apply max-key :score (take num-competitors (shuffle population))))
+  (best (take num-competitors (shuffle population))))
+
 
 (defn crossover-mutator
   "use tournament selection to generate children"
   [population crossing]
   (let [gen-winner #(tournament population 10)
         gen-child #(crossing (gen-winner) (gen-winner))]
-    (repeat (count population) (gen-child))))
+    (repeatedly (count population) gen-child )))
 
+
+(defn two-point-crossover
+  [answer-1 answer-2]
+  (let [choices-1 (:choices answer-1)
+        choices-2 (:choices answer-2)
+        size (count choices-1)
+        [first-split last-split] (sort (repeatedly 2 #(rand-int size)))
+
+        new-choices (concat
+                      (take first-split choices-1)
+
+                      (->> choices-2
+                           (drop first-split)
+                           (take (- last-split first-split)))
+
+                      (drop last-split choices-1))]
+
+    (add-score (core/make-answer (:instance answer-1) new-choices))))
+
+
+(apply two-point-crossover (take 2 (wild-type knapPI_11_20_1000_1)))
 
 (defn uniform-crossover
   "Take two answers and create a third one using uniform crossover"
   [answer-1 answer-2]
-  (let [answer-vector (map vec (:choices answer-1) (:choices answer-2))
+  (let [answer-vector (map vector (:choices answer-1) (:choices answer-2))
         new-choices (map rand-nth answer-vector)]
     (add-score (core/make-answer (:instance answer-1) new-choices))))
+
+(let [uniform-crossover (fn [pop] (crossover-mutator pop uniform-crossover))
+      two-point-crossover (fn [pop] (crossover-mutator pop two-point-crossover))]
+(mutate-search knapPI_16_20_1000_63 two-point-crossover 200))
+
+
+
+
+
 
 
