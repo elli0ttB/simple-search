@@ -33,28 +33,36 @@
   [instance num]
   (take num (wild-type instance)))
 
-(defn modify-generation
-  "create a new generation from a population by mutating it, and taking the best
-  n out of old and young combined, where n is population size. Population should be free of duplicates"
-  [population mutator]
-  (->> population
-      (concat (mutator population))
+
+
+(defn lambda-select
+  "take a population and have each child have lambda children, then take the best, including the original population"
+  [lambda mutator]
+  (fn [population]
+    (->> #(mutator population)
+      (repeatedly lambda)
+      (apply concat population)
       (sort-by (comp - :score))
       dedupe
-      (take (count population))))
+      (take (count population)))))
 
-(defn mutate-search
-  "generate an answer through randomly mutating a population"
-  [instance mutator evals pop-size]
+(defn dump-select
+  "create a new generation from a population by mutating it, and taking the best
+  n out of old and young combined, where n is population size. Population should be free of duplicates"
+  [mutator]
+  (lambda-select 1 mutator))
+
+
+
+(defn simple-mutate-search
+  "generate an answer through mutating a populatin with mutate, and taking the best of parents and children"
+  [instance next-genration evals pop-size]
   (let [start (first-generation instance pop-size)
-        modify #(modify-generation % mutator)
-        generations (iterate modify start)
+        generations (iterate next-genration start)
         final-pop (nth generations evals)]
     (best final-pop)))
 
-(defn tournament
-  [population num-competitors]
-  (best (take num-competitors (shuffle population))))
+
 
 (defn bits-to-ans
   "take a function that operates on bits returns an equivalent function that operates on answers"
@@ -64,12 +72,20 @@
           instance (:instance (first answers)) ]
     (make-answer instance (apply bit-mutator choices)))))
 
-(defn crossover-mutator
-  "use tournament selection to generate children with a given algorithm, given a genetic crossing"
-  [population crossing]
-  (let [gen-winner #(tournament population 10)
-        gen-child #( (bits-to-ans crossing) (gen-winner) (gen-winner) )]
-    (repeatedly (count population) gen-child )))
+
+(defn tournament
+  [population num-competitors]
+  (best (take num-competitors (shuffle population))))
+
+(defn crossover-tournaments
+  "given a crossing, return a func that uses tournaments to run that crossing on the population"
+  [crossing]
+    (fn [population]
+    (let [gen-winner #(tournament population 2)
+          gen-child #( (bits-to-ans crossing) (gen-winner) (gen-winner) )]
+      (repeatedly (count population) gen-child ))))
+
+
 
 (defn get-randoms
   "return a sorted list of random numbers between 0 and max"
@@ -90,22 +106,28 @@
 (defn uniform-crossover [choices-1 choices-2]
   (map (comp rand-nth vector) choices-1 choices-2))
 
+(defn mutate-at-rate
+  "mutate choices with probability p"
+  ([choices]
+   (mutate-at-rate 0.1 choices))
+  ([p choices]
+      (if (< (rand) p)
+        (core/mutate-choices choices)
+        choices)))
+
 (defn mutate-pop
   "generate three-armed children of population using mutation from core.clj"
   [population]
   (map  #(add-score (core/mutate-answer %)) population))
 
-;;; testing stuff woohoo
+
+
+;;; testing stuff
 
 (apply (bits-to-ans uniform-crossover) (take 2 (wild-type knapPI_11_20_1000_1)))
 
-(let [uniform-crossover (fn [pop] (crossover-mutator pop uniform-crossover))
-      two-point-crossover (fn [pop] (crossover-mutator pop two-point-crossover))]
-(mutate-search knapPI_16_20_1000_63 two-point-crossover 100 30))
-
-
-
-
-
-
-
+(let [method (->> two-point-crossover
+                  (comp mutate-at-rate)
+                  crossover-tournaments
+                  (lambda-select 5)   )]
+  (simple-mutate-search knapPI_16_20_1000_63 method 20 30))
