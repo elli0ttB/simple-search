@@ -38,33 +38,6 @@
                             #(rand-int 2))]
     (make-answer instance choices)))
 
-(defn random-answer-under-weight
-  "random answer that will be under weight, by randomly dropping until that is true"
-  [instance]
-  (loop [answer (random-answer instance)]
-    (if (= 0 (score answer))
-      (recur
-        (make-answer instance
-          (assoc (vec (:choices answer))
-                 (rand-nth (get-indexes answer))
-                 0)))
-      answer)))
-
-(get-indexes (random-answer knapPI_16_200_1000_1))
-
-(defn get-indexes
-  "return indexes of included items in answer"
-  [answer]
-  (let [choices (vec (:choices answer))]
-    (filter #(= 1 (choices %))
-        (range (count choices)))))
-
-(defn get-indexes
-  "return indexes of included items in answer"
-  [answer]
-  (map second
-       (filter #(= 1 (first %))
-               (map vector (:choices answer) (range)))))
 
 ;;; It might be cool to write a function that
 ;;; generates weighted proportions of 0's and 1's.
@@ -87,24 +60,6 @@
     (- (:total-weight answer))
     (:total-value answer)))
 
-(defn lexi-score
-  [answer]
-  (let [shuffled-items (shuffle (included-items (:items (:instance answer))
-                                                (:choices answer)))
-        capacity (:capacity (:instance answer))]
-    (loop [value 0
-           weight 0
-           items shuffled-items]
-      (if (empty? items)
-        value
-        (let [item (first items)
-              w (:weight item)
-              v (:value item)]
-          (if (> (+ weight w) capacity)
-            (recur value weight (rest items))
-            (recur (+ value v)
-                   (+ weight w)
-                   (rest items))))))))
 
 ; (lexi-score (random-answer knapPI_16_200_1000_1))
 
@@ -155,3 +110,24 @@
 
 ; (time (hill-climber mutate-answer penalized-score knapPI_16_200_1000_1 100000
 ; )`)
+
+
+(defn get-indexes
+  "return indexes of included items in answer"
+  [answer]
+  (let [choices (vec (:choices answer))]
+    (filter #(= 1 (choices %))
+        (range (count choices)))))
+
+(defn random-answer-under-weight
+  "random answer that will be under weight, by randomly dropping until that is true"
+  [instance]
+  (loop [answer (random-answer instance)]
+    (if (= 0 (score answer))
+      (recur
+        (make-answer instance
+          (assoc (vec (:choices answer))
+                 (rand-nth (get-indexes answer))
+                 0)))
+      answer)))
+

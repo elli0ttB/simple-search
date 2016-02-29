@@ -22,7 +22,7 @@
   [instance]
   "generate lazy seq of random individuals"
   (repeatedly #(add-score (core/random-answer instance))))
-
+ 
 (defn best
   "take a population and return answer with highest score"
   [population]
@@ -33,10 +33,14 @@
   [instance num]
   (take num (wild-type instance)))
 
-
+(defn first-generation-skinny
+  [instance num]
+  (repeatedly num
+              #(add-score
+                 (core/random-answer-under-weight instance))))
 
 (defn lambda-select
-  "take a population and have each child have lambda children, then take the best, including the original population"
+  "take a population and have eac h child have lambda children, then take the best, including the original population"
   [lambda mutator]
   (fn [population]
     (->> #(mutator population)
@@ -57,11 +61,14 @@
 
 (defn simple-mutate-search
   "generate an answer through mutating a populatin with mutate, and taking the best of parents and children"
-  [next-generation pop-size instance evals]
-  (let [start (first-generation instance pop-size)
-        generations (iterate next-generation start)
-        final-pop (nth generations evals)]
-    (best final-pop)))
+  ([next-generation pop-size instance evals]
+   (simple-mutate-search first-generation next-generation pop-size instance evals))
+
+  ([intialize-pop next-generation pop-size instance evals]
+   (let [start (intialize-pop instance pop-size)
+         generations (iterate next-generation start)
+         final-pop (nth generations evals)]
+     (best final-pop))))
 
 (defn birth
   "apply a bit-mutator to answers and return a new answer"
@@ -120,13 +127,15 @@
 
 (defn searcher
   "creates a seracher for use in experiments"
-  [method pop-size]
-  (partial simple-mutate-search method pop-size))
+  ([method pop-size]
+   (partial simple-mutate-search method pop-size))
+  ([initialize-pop method pop-size]
+   (partial simple-mutate-search initialize-pop method pop-size)))
 
 
 ;;; random garbage
 
-#(apply (bits-to-ans uniform-crossover) (take 2 (wild-type knapPI_11_20_1000_1)))
+#(apply (birth uniform-crossover) (take 2 (wild-type knapPI_11_20_1000_1)))
 
 (let [method (->> two-point-crossover
                   (comp mutate-at-rate)
@@ -143,18 +152,18 @@
     (let [num-tournys (/ (count population) 2)
           gen-winner #(tournament population 2)
           have-children (fn [p1 p2]
-                           (repeatedly 2 #( (bits-to-ans crossing) p1 p2)))]
+                           (repeatedly 2 #( (birth crossing) p1 p2)))]
       ( ->> #(have-children (gen-winner) (gen-winner))
             repeatedly
             flatten
             distinct
             take num-tournys))))
 
-(defn GeneticAlgorithm
-  "Genetic Algorithm by the book"
-  [pop-size]
-  (let [first-gen (set (first-generation pop-size))
-        bestist (best first-gen)]
-    (for )
-    )
-  )
+;;(defn GeneticAlgorithm
+;;  "Genetic Algorithm by the book"
+;;  [pop-size]
+;;  (let [first-gen (set (first-generation pop-size))
+;;        bestist (best first-gen)]
+;;    (for )
+;;    )
+;;  )

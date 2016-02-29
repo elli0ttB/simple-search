@@ -1,6 +1,6 @@
 (ns simple-search.genetic-exp
   (:require [simple-search.experiment :as exp])
-  (:use [simple-search.genetic-search])
+  (:use simple-search.genetic-search)
   (:use simple-search.knapsack-examples.knapPI_11_20_1000
         simple-search.knapsack-examples.knapPI_13_20_1000
         simple-search.knapsack-examples.knapPI_16_20_1000
@@ -34,7 +34,7 @@
 
     (with-meta
       (let [method (->> uniform-crossover
-                        crossover-tournaments
+                        crossover-tournam ents
                         (dump-select))]
         (searcher method 50))
       {:label "uniform-crossover, no mutation 50+1"})
@@ -43,14 +43,23 @@
       (let [method (->> mutate-pop
                         (lambda-select 3))]
         (searcher method 20))
-      {:label "random-mutation, 20+3"})))
+      {:label "random-mutation, 20+3"})
+
+    (with-meta
+      (let [method (->> mutate-pop
+                        (lambda-select 3))]
+        (searcher first-generation-skinny method 20))
+      {:label "random-mutation, 20+3 with intial pop below capacity"})))
+
 
 (defn now [] (new java.util.Date))
 
 (defn research [sets reps tests]
   "do an experiment with a nice title"
-  (spit (format "data/Genetic/genetic_%d_sets_%d_reps%s" sets reps (now))
+  (spit (format "data/genetic/genetic_%d_sets_%d_reps_%s" sets reps (now))
     (apply exp/do-main sets reps tests)))
+
+(research 3 3 tests)
 
 (def possibly-best-way
   "run with 20 reps, 70 tests"
@@ -62,7 +71,6 @@
         (searcher method 50))
       {:label "uniform-crossover, no mutation 50+1"}))
 
-(research 20 70 possibly-best-way)
 
 
 
