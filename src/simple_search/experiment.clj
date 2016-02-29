@@ -41,6 +41,18 @@
   (let [problem (var-get (resolve (symbol problem-name)))]
     (assoc problem :label problem-name)))
 
+(defn do-main
+  "same as main, but called in clojure, not cmdline, and returns a string. mains are for java"
+  [num-repetitions max-evals & experiments]
+  (with-out-str
+  (print-experimental-results
+    (run-experiment experiments
+                    (map get-labelled-problem
+                          ["knapPI_11_20_1000_4" "knapPI_13_20_1000_4" "knapPI_16_20_1000_4"
+                          "knapPI_11_200_1000_4" "knapPI_13_200_1000_4" "knapPI_16_200_1000_4"])
+                    num-repetitions
+                    max-evals))))
+
 (defn -main
   "Runs a set of experiments with the number of repetitions and maximum
   answers (tries) specified on the command line.
@@ -59,7 +71,7 @@
   (ns simple-search.experiment)
   (print-experimental-results
    (run-experiment [(with-meta
-                      (partial core/hill-climber core/mutate-answer core/score)
+                      (genetic/searcher)
                       {:label "hill_climber_cliff_score"})
                     (with-meta
                       (partial core/hill-climber core/mutate-answer core/penalized-score)
