@@ -1,1 +1,1 @@
-A generation will be have 50 individuals.
+

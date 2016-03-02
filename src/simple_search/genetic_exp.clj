@@ -8,6 +8,8 @@
         simple-search.knapsack-examples.knapPI_13_200_1000
         simple-search.knapsack-examples.knapPI_16_200_1000))
 
+(def num-evals 100000)
+
 (def tests
   (list
     (with-meta
@@ -18,34 +20,21 @@
         (searcher method 20))
       {:label "two-point-cross with mutation 20+3"})
 
-    (with-meta
-      (let [method (->> two-point-crossover
-                        crossover-tournaments
-                        (lambda-select 3))]
-        (searcher method 20))
-      {:label "two-point crossover, no mutation 20+3"})
 
-    (with-meta
+    #_(with-meta
       (let [method (->> uniform-crossover
                         crossover-tournaments
                         (lambda-select 3))]
         (searcher method 20))
       {:label "uniform-crossover, no mutation 20+3"})
 
-    (with-meta
-      (let [method (->> uniform-crossover
-                        crossover-tournaments
-                        (dump-select))]
-        (searcher method 50))
-      {:label "uniform-crossover, no mutation 50+1"})
-
-    (with-meta
+    #_(with-meta
       (let [method (->> mutate-pop
                         (lambda-select 3))]
         (searcher method 20))
       {:label "random-mutation, 20+3"})
 
-    (with-meta
+    #_(with-meta
       (let [method (->> mutate-pop
                         (lambda-select 3))]
         (searcher first-generation-skinny method 20))
@@ -56,10 +45,14 @@
 
 (defn research [reps evals tests]
   "do an experiment with a nice file name"
-  (spit (format "data/genetic/_%d_reps_%s" reps evals (now))
-    (apply exp/do-main reps evals tests)))
+  (time
+    (spit (format "data/genetic/%d_reps_%d_evals_%s" reps evals (now))
+      (apply exp/do-main reps evals tests))))
 
-(research 3 3 tests)
+(research 1 100000 tests)
+
+
+
 
 (def possibly-best-way
   "run with 20 reps, 70 tests"

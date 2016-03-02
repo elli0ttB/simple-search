@@ -7,6 +7,7 @@
         simple-search.knapsack-examples.knapPI_13_200_1000
         simple-search.knapsack-examples.knapPI_16_200_1000))
 
+
 (defmacro dbg[x] `(let [x# ~x] (println "dbg:" '~x "=" x#) x#))
 
 (def ^:dynamic *add-score-counter*
@@ -14,7 +15,7 @@
   (atom 0))
 
 (defn add-score
-  "wrapper around core/add-score for which calls can be tracked from other functions"
+  "wrapper around core/add-score which increments counter"
   [answer]
   (swap! *add-score-counter* inc)
   (core/add-score
@@ -158,7 +159,7 @@
                  ; crossover-tournaments
                    mutate-pop
                    )]
-  (simple-mutate-search method 20 knapPI_16_20_1000_63 30))
+  (simple-mutate-search method 100 knapPI_16_20_1000_63 100000))
 
 
 (defn by-the-book-crossover-tournaments
