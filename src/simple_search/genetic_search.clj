@@ -9,35 +9,47 @@
 
 (defmacro dbg[x] `(let [x# ~x] (println "dbg:" '~x "=" x#) x#))
 
+(def ^:dynamic *add-score-counter*
+  "keep track of add-score, use with binding"
+  (atom 0))
+
 (defn add-score
+  "wrapper around core/add-score for which calls can be tracked from other functions"
   [answer]
-  (core/add-score core/penalized-score answer))
+  (swap! *add-score-counter* inc)
+  (core/add-score
+    core/penalized-score answer))
 
 (defn make-answer
   "wrapper around core/make-answer"
   [instance choices]
-  (add-score (core/make-answer instance choices)))
+  (add-score
+    (core/make-answer instance choices)))
 
 (defn wild-type
   [instance]
   "generate lazy seq of random individuals"
-  (repeatedly #(add-score (core/random-answer instance))))
- 
+  (repeatedly
+    #(add-score (core/random-answer instance))))
+
 (defn best
   "take a population and return answer with highest score"
-  [population]
-  (apply max-key :score population))
+  ([population]
+   (reduce max-key :score population)))
 
 (defn first-generation
   "generate num random answers for instance"
   [instance num]
-  (take num (wild-type instance)))
+  (take num
+    (distinct
+      (wild-type instance))))
 
 (defn first-generation-skinny
   [instance num]
-  (repeatedly num
-              #(add-score
-                 (core/random-answer-under-weight instance))))
+  (take num
+    (distinct
+      (repeatedly
+        #(add-score (core/random-answer-under-weight instance))))))
 
 (defn lambda-select
   "take a population and have eac h child have lambda children, then take the best, including the original population"
@@ -57,37 +69,41 @@
   [mutator]
   (lambda-select 1 mutator))
 
-
-
 (defn simple-mutate-search
-  "generate an answer through mutating a populatin with mutate, and taking the best of parents and children"
+  "search by mutating population with given method, restricted to up to `evals` calls to add-score"
   ([next-generation pop-size instance evals]
-   (simple-mutate-search first-generation next-generation pop-size instance evals))
+   (simple-mutate-search
+     first-generation next-generation pop-size instance evals))
 
-  ([intialize-pop next-generation pop-size instance evals]
-   (let [start (intialize-pop instance pop-size)
-         generations (iterate next-generation start)
-         final-pop (nth generations evals)]
-     (best final-pop))))
+  ([initialize-pop next-generation pop-size instance evals]
+     (binding [*add-score-counter* (atom 0)]
+       (best
+         (take-while (fn [ _ ] (< @*add-score-counter* evals))
+           (flatten
+             (iterate next-generation
+               (initialize-pop instance pop-size))))))))
 
 (defn birth
   "apply a bit-mutator to answers and return a new answer"
   [bit-mutator & answers]
     (make-answer (:instance (first answers))
-                 (apply bit-mutator
-                        (map :choices answers))))
+      (apply bit-mutator
+        (map :choices answers))))
 
 (defn tournament
-  [population num-competitors]
-  (best (take num-competitors (shuffle population))))
+  "run a genetic tournament on the population, presumably to generate parents"
+  [population sample-size]
+  (best (take sample-size (shuffle population))))
 
 (defn crossover-tournaments
   "given a crossing, return a func that uses tournaments to run that crossing on the population generating a child population"
   [crossing]
-    (fn [population]
-    (let [gen-winner #(tournament population 2)
-          gen-child #(birth crossing (gen-winner) (gen-winner) )]
-      (repeatedly (count population) gen-child ))))
+  (fn [population]
+    (let [gen-winner #(tournament population 2) ]
+      (take (count population)
+        (distinct
+          (repeatedly
+            #(birth crossing (gen-winner) (gen-winner))))))))
 
 
 (defn get-randoms
@@ -102,10 +118,10 @@
   [choices-1 choices-2]
   (let [[first-split last-split] (get-randoms 2 (count choices-1))]
       (concat
-          (take first-split choices-1)
-          (take (- last-split first-split)
-                (drop first-split choices-2))
-          (drop last-split choices-1))))
+         (take first-split choices-1)
+         (take (- last-split first-split)
+               (drop first-split choices-2))
+         (drop last-split choices-1))))
 
 (defn uniform-crossover [choices-1 choices-2]
   (map (comp rand-nth vector) choices-1 choices-2))
@@ -122,7 +138,8 @@
 (defn mutate-pop
   "generate three-armed children of population using mutation from core.clj"
   [population]
-  (map  #(add-score (core/mutate-answer %)) population))
+  (map  #(add-score (core/mutate-answer %))
+     population))
 
 
 (defn searcher
@@ -135,29 +152,27 @@
 
 ;;; random garbage
 
-#(apply (birth uniform-crossover) (take 2 (wild-type knapPI_11_20_1000_1)))
+#_(apply birth two-point-crossover (take 2 (wild-type knapPI_11_20_1000_1)))
 
-(let [method (->> two-point-crossover
-                  (comp mutate-at-rate)
-                  crossover-tournaments
-                  (lambda-select 5)   )]
-  ((searcher method 20) knapPI_16_20_1000_63 30))
-
+(let [method (->>; two-point-crossover
+                 ; crossover-tournaments
+                   mutate-pop
+                   )]
+  (simple-mutate-search method 20 knapPI_16_20_1000_63 30))
 
 
 (defn by-the-book-crossover-tournaments
   "like the first one but as implemented in essentials of metaheuristics"
   [crossing]
     (fn [population]
-    (let [num-tournys (/ (count population) 2)
-          gen-winner #(tournament population 2)
+    (let [gen-winner #(tournament population 2)
           have-children (fn [p1 p2]
-                           (repeatedly 2 #( (birth crossing) p1 p2)))]
+                           (repeatedly 2 #(birth crossing p1 p2)))]
       ( ->> #(have-children (gen-winner) (gen-winner))
             repeatedly
             flatten
             distinct
-            take num-tournys))))
+            take (/ (count population) 2)))))
 
 ;;(defn GeneticAlgorithm
 ;;  "Genetic Algorithm by the book"

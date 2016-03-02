@@ -34,7 +34,7 @@
 
     (with-meta
       (let [method (->> uniform-crossover
-                        crossover-tournam ents
+                        crossover-tournaments
                         (dump-select))]
         (searcher method 50))
       {:label "uniform-crossover, no mutation 50+1"})
@@ -54,10 +54,10 @@
 
 (defn now [] (new java.util.Date))
 
-(defn research [sets reps tests]
-  "do an experiment with a nice title"
-  (spit (format "data/genetic/genetic_%d_sets_%d_reps_%s" sets reps (now))
-    (apply exp/do-main sets reps tests)))
+(defn research [reps evals tests]
+  "do an experiment with a nice file name"
+  (spit (format "data/genetic/_%d_reps_%s" reps evals (now))
+    (apply exp/do-main reps evals tests)))
 
 (research 3 3 tests)
 

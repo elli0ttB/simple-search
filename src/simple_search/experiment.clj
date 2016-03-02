@@ -71,14 +71,14 @@
   (ns simple-search.experiment)
   (print-experimental-results
    (run-experiment [(with-meta
-                      (genetic/searcher)
+                      (partial core/hill-climber core/mutate-answer core/penalized-score)
                       {:label "hill_climber_cliff_score"})
                     (with-meta
                       (partial core/hill-climber core/mutate-answer core/penalized-score)
                       {:label "hill_climber_penalized_score"})
                     (with-meta (partial core/random-search core/score)
                       {:label "random_search"})]
-                   (map get-labelled-problem
+                    (map get-labelled-problem
                         ["knapPI_11_20_1000_4" "knapPI_13_20_1000_4" "knapPI_16_20_1000_4"
                          "knapPI_11_200_1000_4" "knapPI_13_200_1000_4" "knapPI_16_200_1000_4"])
                    (Integer/parseInt num-repetitions)
