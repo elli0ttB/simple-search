@@ -42,18 +42,24 @@
   (let [problem (var-get (resolve (symbol problem-name)))]
     (assoc problem :label problem-name)))
 
+(comment
+  ( var-get (resolve( symbol "knapPI_16_1000_1000_3" )) )
+  (map get-labelled-problem
+                            ["knapPI_11_20_1000_4" "knapPI_13_20_1000_4" "knapPI_16_20_1000_4"
+                            "knapPI_11_200_1000_4" "knapPI_13_200_1000_4" "knapPI_16_200_1000_4"
+                            "knapPI_16_1000_1000_3" ]))
+
 (defn do-main
-  "same as main, but called in clojure, not cmdline, and returns a string. mains are for java"
+  "same as main, but called in clojure, not cmdline"
   [num-repetitions max-evals & experiments]
-  (with-out-str
   (print-experimental-results
     (run-experiment experiments
                     (map get-labelled-problem
                           ["knapPI_11_20_1000_4" "knapPI_13_20_1000_4" "knapPI_16_20_1000_4"
-                          "knapPI_11_200_1000_4" "knapPI_13_200_1000_4" "knapPI_16_200_1000_4"
-                           "knapPI_16_1000_1000_3"])
+                           "knapPI_11_200_1000_4" "knapPI_13_200_1000_4" "knapPI_16_200_1000_4"
+                           "knapPI_16_1000_1000_3" ])
                     num-repetitions
-                    max-evals))))
+                    max-evals)))
 
 (defn -main
   "Runs a set of experiments with the number of repetitions and maximum

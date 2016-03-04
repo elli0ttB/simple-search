@@ -21,6 +21,14 @@
   (core/add-score
     core/penalized-score answer))
 
+(defn repeatedly-distinct
+  "do a function repeatedly, returning unique results"
+  ([function]
+   (distinct (repeatedly function)))
+  ([num function]
+   (take num (repeatedly-distinct function))))
+
+
 (defn make-answer
   "wrapper around core/make-answer"
   [instance choices]
@@ -36,7 +44,9 @@
 (defn best
   "take a population and return answer with highest score"
   ([population]
-   (reduce max-key :score population)))
+   (if (empty? population)
+     nil
+     (reduce (partial max-key :score) population))))
 
 (defn first-generation
   "generate num random answers for instance"
@@ -47,10 +57,8 @@
 
 (defn first-generation-skinny
   [instance num]
-  (take num
-    (distinct
-      (repeatedly
-        #(add-score (core/random-answer-under-weight instance))))))
+  (repeatedly-distinct num
+     #(add-score (core/random-answer-under-weight instance))))
 
 (defn lambda-select
   "take a population and have eac h child have lambda children, then take the best, including the original population"
@@ -94,17 +102,17 @@
 (defn tournament
   "run a genetic tournament on the population, presumably to generate parents"
   [population sample-size]
-  (best (take sample-size (shuffle population))))
+  (best
+    (repeatedly-distinct sample-size
+      #(rand-nth population))))
 
 (defn crossover-tournaments
   "given a crossing, return a func that uses tournaments to run that crossing on the population generating a child population"
   [crossing]
   (fn [population]
-    (let [gen-winner #(tournament population 2) ]
-      (take (count population)
-        (distinct
-          (repeatedly
-            #(birth crossing (gen-winner) (gen-winner))))))))
+    (let [gen-winner #(tournament population 2)]
+      (repeatedly-distinct (count population)
+        #(birth crossing (gen-winner) (gen-winner))))))
 
 
 (defn get-randoms
@@ -121,7 +129,7 @@
       (concat
          (take first-split choices-1)
          (take (- last-split first-split)
-               (drop first-split choices-2))
+           (drop first-split choices-2))
          (drop last-split choices-1))))
 
 (defn uniform-crossover [choices-1 choices-2]
@@ -155,11 +163,11 @@
 
 #_(apply birth two-point-crossover (take 2 (wild-type knapPI_11_20_1000_1)))
 
-(let [method (->>; two-point-crossover
-                 ; crossover-tournaments
-                   mutate-pop
+(let [method (->> two-point-crossover
+                  crossover-tournaments
+                  (lambda-select 2)
                    )]
-  (simple-mutate-search method 100 knapPI_16_20_1000_63 100000))
+  (simple-mutate-search method 100 knapPI_16_20_1000_63 1000))
 
 
 (defn by-the-book-crossover-tournaments
