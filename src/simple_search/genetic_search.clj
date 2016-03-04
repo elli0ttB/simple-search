@@ -11,14 +11,9 @@
 
 (defmacro dbg[x] `(let [x# ~x] (println "dbg:" '~x "=" x#) x#))
 
-(def ^:dynamic *add-score-counter*
-  "keep track of add-score, use with binding"
-  (atom 0))
-
 (defn add-score
   "wrapper around core/add-score which increments counter"
   [answer]
-  (swap! *add-score-counter* inc)
   (core/add-score
     core/penalized-score answer))
 
@@ -28,7 +23,6 @@
    (distinct (repeatedly function)))
   ([num function]
    (take num (repeatedly-distinct function))))
-
 
 (defn make-answer
   "wrapper around core/make-answer"
@@ -80,31 +74,17 @@
   (lambda-select 1 mutator))
 
 
-(defn show-stats
-  [filename counter evals]
-  (future
-    (while (< @*add-score-counter* evals)
-      (Thread/sleep 10000)
-      (spit filename @counter))
-    (io/delete-file filename)))
-
-
 (defn simple-mutate-search
   "search by mutating population with given method, restricted to up to `evals` calls to add-score"
-  ([next-generation pop-size instance evals]
+  ([next-generation pop-size multiplier instance evals]
    (simple-mutate-search
-     first-generation next-generation pop-size instance evals))
-
-  ([initialize-pop next-generation pop-size instance evals]
-     (binding [*add-score-counter* (atom 0)]
-       (show-stats (format "data/genetic/counters/method%s problem%s" (str next-generation) (->> instance meta :ns str)) *add-score-counter* evals)
+     first-generation next-generation pop-size multiplier instance evals))
+  ([initialize-pop next-generation pop-size multiplier instance evals]
        (best
-         (take-while (fn [ _ ] (< @*add-score-counter* evals))
-           (flatten
-             (iterate next-generation
-               (initialize-pop instance pop-size))))))))
-
-
+        (flatten
+          (take (/ evals (* pop-size multiplier))
+           (iterate next-generation
+             (initialize-pop instance pop-size)))))))q
 
 
 
@@ -121,6 +101,7 @@
   (best
     (repeatedly-distinct sample-size
       #(rand-nth population))))
+
 
 (defn crossover-tournaments
   "given a crossing, return a func that uses tournaments to run that crossing on the population generating a child population"
@@ -169,10 +150,10 @@
 
 (defn searcher
   "creates a seracher for use in experiments"
-  ([method pop-size]
-   (partial simple-mutate-search method pop-size))
-  ([initialize-pop method pop-size]
-   (partial simple-mutate-search initialize-pop method pop-size)))
+  ([method pop-size multiplier]
+   (partial simple-mutate-search method pop-size multiplier))
+  ([initialize-pop method pop-size multiplier]
+   (partial simple-mutate-search initialize-pop method pop-size multiplier)))
 
 
 ;;; random garbage

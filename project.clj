@@ -3,5 +3,6 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [me.raynes/fs "1.4.6"]]
   :jvm-opts ["-Xmx4G"]
+  :main simple-search.genetic-exp
   :profiles {:dev {:dependencies [[midje "1.5.1"]]}})
 
