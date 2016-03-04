@@ -1,5 +1,6 @@
 (ns simple-search.genetic-exp
   (:require [simple-search.experiment :as exp])
+
   (:use simple-search.genetic-search)
   (:use simple-search.knapsack-examples.knapPI_11_20_1000
         simple-search.knapsack-examples.knapPI_13_20_1000
@@ -38,8 +39,7 @@
       (let [method (->> mutate-pop
                         (lambda-select 3))]
         (searcher first-generation-skinny method 100))
-      {:label "random-mutation, 20+3 with intial pop below capacity"})));
-
+      {:label "random-mutation, 20+3 with intial pop below capacity"})))
 
 (defn now [] (new java.util.Date))
 
@@ -57,11 +57,11 @@
       (binding [*out* file]
         (apply exp/do-main reps evals tests)))))
 
-;(comment
-  (research 1 5000 tests)
-  (use 'clojure.stacktrace)
-  (e)
-;  )
+
+  (research 30 num-evals tests)
+  ;;(use 'clojure.stacktrace)
+  ;;(e)
+
 
 
 (def possibly-best-way

@@ -1,6 +1,7 @@
 (ns simple-search.genetic-search
   (:require [simple-search.core :as core])
-   (:use simple-search.knapsack-examples.knapPI_11_20_1000
+  (:require [clojure.java.io :as io])
+  (:use simple-search.knapsack-examples.knapPI_11_20_1000
         simple-search.knapsack-examples.knapPI_13_20_1000
         simple-search.knapsack-examples.knapPI_16_20_1000
         simple-search.knapsack-examples.knapPI_11_200_1000
@@ -78,6 +79,16 @@
   [mutator]
   (lambda-select 1 mutator))
 
+
+(defn show-stats
+  [filename counter evals]
+  (future
+    (while (< @*add-score-counter* evals)
+      (Thread/sleep 10000)
+      (spit filename @counter))
+    (io/delete-file filename)))
+
+
 (defn simple-mutate-search
   "search by mutating population with given method, restricted to up to `evals` calls to add-score"
   ([next-generation pop-size instance evals]
@@ -86,11 +97,16 @@
 
   ([initialize-pop next-generation pop-size instance evals]
      (binding [*add-score-counter* (atom 0)]
+       (show-stats (format "data/genetic/counters/method%s problem%s" (str next-generation) (->> instance meta :ns str)) *add-score-counter* evals)
        (best
          (take-while (fn [ _ ] (< @*add-score-counter* evals))
            (flatten
              (iterate next-generation
                (initialize-pop instance pop-size))))))))
+
+
+
+
 
 (defn birth
   "apply a bit-mutator to answers and return a new answer"
@@ -163,7 +179,7 @@
 
 #_(apply birth two-point-crossover (take 2 (wild-type knapPI_11_20_1000_1)))
 
-(let [method (->> two-point-crossover
+#_(let [method (->> two-point-crossover
                   crossover-tournaments
                   (lambda-select 2)
                    )]

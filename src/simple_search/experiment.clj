@@ -11,9 +11,9 @@
 (defn run-experiment
   [searchers problems num-replications max-evals]
   (println "Search_method Problem Max_evals Run Score")
-  (for [searcher searchers
-        p problems
-        n (range num-replications)]
+  (for [n (range num-replications)
+        searcher searchers
+        p problems]
     (let [answer (future (searcher p max-evals))]
       {:searcher searcher
        :problem p
