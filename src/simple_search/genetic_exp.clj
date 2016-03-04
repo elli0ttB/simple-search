@@ -17,7 +17,7 @@
                         (comp mutate-at-rate)
                         crossover-tournaments
                         (lambda-select 3))]
-        (searcher method 1000))
+        (searcher method 100))
       {:label "two-point-cross with mutation 20+3"})
 
 
@@ -25,23 +25,24 @@
       (let [method (->> uniform-crossover
                         crossover-tournaments
                         (lambda-select 3))]
-        (searcher method 1000))
+        (searcher method 100))
       {:label "uniform-crossover, no mutation 20+3"})
 
     (with-meta
       (let [method (->> mutate-pop
                         (lambda-select 3))]
-        (searcher method 1000))
+        (searcher method 100))
       {:label "random-mutation, 20+3"})
 
     #_(with-meta
       (let [method (->> mutate-pop
                         (lambda-select 3))]
-        (searcher first-generation-skinny method 1000))
-      {:label "random-mutation, 20+3 with intial pop below capacity"})))
+        (searcher first-generation-skinny method 100))
+      {:label "random-mutation, 20+3 with intial pop below capacity"})));
 
 
 (defn now [] (new java.util.Date))
+
 
 (defn output-file
   "create a file to be written to with a nice name for research"
@@ -52,14 +53,15 @@
 (defn research [reps evals tests]
   "do an experiment with a nice file name"
   (time
-    (with- pen [file (output-file reps evals)]
+    (with-open [file (output-file reps evals)]
       (binding [*out* file]
         (apply exp/do-main reps evals tests)))))
 
-(comment
-  (research 1 30 tests)
+;(comment
+  (research 1 5000 tests)
   (use 'clojure.stacktrace)
-  (e))
+  (e)
+;  )
 
 
 (def possibly-best-way

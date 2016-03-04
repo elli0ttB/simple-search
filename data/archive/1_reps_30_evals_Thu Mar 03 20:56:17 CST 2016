@@ -1,0 +1,7 @@
+Search_method Problem Max_evals Run Score
+knapPI_16_1000_1000_3two-point-cross with mutation 20+3 knapPI_11_20_1000_4 30 0 nil
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 30 0 nil
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 30 0 nil
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 30 0 nil
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 30 0 nil
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 30 0 nil

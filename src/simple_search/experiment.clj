@@ -39,15 +39,12 @@
    problem instance (as a map) with the name added to the map under
    the :label key."
   [problem-name]
-  (let [problem (var-get (resolve (symbol problem-name)))]
-    (assoc problem :label problem-name)))
-
-(comment
-  ( var-get (resolve( symbol "knapPI_16_1000_1000_3" )) )
-  (map get-labelled-problem
-                            ["knapPI_11_20_1000_4" "knapPI_13_20_1000_4" "knapPI_16_20_1000_4"
-                            "knapPI_11_200_1000_4" "knapPI_13_200_1000_4" "knapPI_16_200_1000_4"
-                            "knapPI_16_1000_1000_3" ]))
+  (try
+    (let [problem (var-get (resolve (symbol problem-name)))]
+      (assoc problem :label problem-name))
+    (catch Exception e
+      (println "get-labeleed problem error" problem-name)
+      (throw e))))
 
 (defn do-main
   "same as main, but called in clojure, not cmdline"
@@ -57,7 +54,7 @@
                     (map get-labelled-problem
                           ["knapPI_11_20_1000_4" "knapPI_13_20_1000_4" "knapPI_16_20_1000_4"
                            "knapPI_11_200_1000_4" "knapPI_13_200_1000_4" "knapPI_16_200_1000_4"
-                           "knapPI_16_1000_1000_3" ])
+                          ])
                     num-repetitions
                     max-evals)))
 
