@@ -54,7 +54,9 @@
                     num-repetitions
                     max-evals)))
 
-(defn -main
+(comment
+  "we wrote our own main in genetic-exp"
+  (defn -main
   "Runs a set of experiments with the number of repetitions and maximum
   answers (tries) specified on the command line.
 
@@ -84,5 +86,5 @@
                          "knapPI_11_200_1000_4" "knapPI_13_200_1000_4" "knapPI_16_200_1000_4"])
                    (Integer/parseInt num-repetitions)
                    (Integer/parseInt max-answers)))
-  (shutdown-agents))
+  (shutdown-agents)))
 

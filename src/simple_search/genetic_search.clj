@@ -11,18 +11,29 @@
 
 (defmacro dbg[x] `(let [x# ~x] (println "dbg:" '~x "=" x#) x#))
 
+(def ^:dynamic counter
+  (atom 0))
+
+(defn debugger
+  []
+  (swap! counter inc)
+  (println @counter))
+
 (defn add-score
   "wrapper around core/add-score which increments counter"
   [answer]
+  (debugger)
   (core/add-score
     core/penalized-score answer))
 
-(defn repeatedly-distinct
-  "do a function repeatedly, returning unique results"
-  ([function]
-   (distinct (repeatedly function)))
-  ([num function]
-   (take num (repeatedly-distinct function))))
+;;(defn repeatedly-distinct
+;;  "do a function repeatedly, returning unique results"
+;;  ([function]
+;;   (distinct (repeatedly function)))
+;;  ([num function]
+;;   (take num (repeatedly-distinct function))))
+(def repeatedly-distinct
+  repeatedly)
 
 (defn make-answer
   "wrapper around core/make-answer"
@@ -39,9 +50,7 @@
 (defn best
   "take a population and return answer with highest score"
   ([population]
-   (if (empty? population)
-     nil
-     (reduce (partial max-key :score) population))))
+   (apply max-key :score population)))
 
 (defn first-generation
   "generate num random answers for instance"
@@ -56,23 +65,15 @@
      #(add-score (core/random-answer-under-weight instance))))
 
 (defn lambda-select
-  "take a population and have eac h child have lambda children, then take the best, including the original population"
+  "take a population and have each child have lambda children, then take the best, including the original population"
   [lambda mutator]
   (fn [population]
     (->> #(mutator population)
       (repeatedly lambda)
       (apply concat population)
       (sort-by (comp - :score))
-      dedupe
+;;      dedupe
       (take (count population)))))
-
-;; this was mutate-search
-(defn dump-select
-  "create a new generation from a population by mutating it, and taking the best
-  n out of old and young combined, where n is population size. Population should be free of duplicates"
-  [mutator]
-  (lambda-select 1 mutator))
-
 
 (defn simple-mutate-search
   "search by mutating population with given method, restricted to up to `evals` calls to add-score"
@@ -80,13 +81,11 @@
    (simple-mutate-search
      first-generation next-generation pop-size multiplier instance evals))
   ([initialize-pop next-generation pop-size multiplier instance evals]
-       (best
-        (flatten
-          (take (/ evals (* pop-size multiplier))
-           (iterate next-generation
-             (initialize-pop instance pop-size)))))))q
-
-
+   (best
+     (map best
+       (take (/ evals (* pop-size multiplier))
+         (iterate next-generation
+           (initialize-pop instance pop-size)))))))
 
 (defn birth
   "apply a bit-mutator to answers and return a new answer"
@@ -164,7 +163,7 @@
                   crossover-tournaments
                   (lambda-select 2)
                    )]
-  (simple-mutate-search method 100 knapPI_16_20_1000_63 1000))
+  (simple-mutate-search method 100 1 knapPI_16_20_1000_63 10000))
 
 
 (defn by-the-book-crossover-tournaments
