@@ -62,7 +62,7 @@
   (defn -main
     []
     (ns simple-search.genetic-exp)
-    (research 30 10000 tests)
+    (research 30 num-evals tests)
     (shutdown-agents))
   ;;(use 'clojure.stacktrace)
   ;;(e)

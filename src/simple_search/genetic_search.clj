@@ -22,7 +22,7 @@
 (defn add-score
   "wrapper around core/add-score which increments counter"
   [answer]
-  (debugger)
+;;  (debugger)
   (core/add-score
     core/penalized-score answer))
 
