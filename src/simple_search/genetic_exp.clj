@@ -20,7 +20,7 @@
                         crossover-tournaments
                         (lambda-select 3))]
         (searcher method 100 3))
-      {:label "two-point-cross with mutation 20+3"})
+      {:label "two-point-cross_without_mutation_20+3"})
 
 
     (with-meta
@@ -28,19 +28,7 @@
                         crossover-tournaments
                         (lambda-select 3))]
         (searcher method 100 3))
-      {:label "uniform-crossover, no mutation 20+3"})
-
-    (with-meta
-      (let [method (->> mutate-pop
-                        (lambda-select 3))]
-        (searcher method 100 3))
-      {:label "random-mutation, 20+3"})
-
-    #_(with-meta
-      (let [method (->> mutate-pop
-                        (lambda-select 3))]
-        (searcher first-generation-skinny method 100 3))
-      {:label "random-mutation, 20+3 with intial pop below capacity"})))
+      {:label "uniform-crossover_with_mutation_20+3"})))
 
 (defn now [] (new java.util.Date))
 
