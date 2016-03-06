@@ -16,19 +16,20 @@
   (list
     (with-meta
       (let [method (->> two-point-crossover
-                        (comp mutate-at-rate)
+                        (comp (partial mutate-at-rate 0.8))
                         crossover-tournaments
                         (lambda-select 3))]
         (searcher method 100 3))
-      {:label "two-point-cross_without_mutation_20+3"})
+      {:label "two-point-cross_high_mutation"})
 
 
     (with-meta
       (let [method (->> uniform-crossover
+                        (comp (partial mutate-at-rate 0.8))
                         crossover-tournaments
                         (lambda-select 3))]
         (searcher method 100 3))
-      {:label "uniform-crossover_with_mutation_20+3"})))
+      {:label "uniform-crossover_high_mutation"})))
 
 (defn now [] (new java.util.Date))
 

@@ -1,0 +1,8 @@
+Search_method Problem Max_evals Run Score
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 0 1440N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 0 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 0 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 0 5180N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 0 3663N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 0 15239N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 0 49340N

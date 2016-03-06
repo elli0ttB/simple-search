@@ -49,7 +49,7 @@ plot(data_50_runs$Score ~ data_50_runs$Search_method,
      xlab="", ylab="Score", las=2)
 ```
 
-The plot shows that uniform crossover was the best, while random mutation was the worst. However, the scores in the various problems were so different that it is hard to tell what is happening. 
+The plot shows that uniform crossover and two-point crossover were better than random mutation. However, the scores in the various problems were so different that it is hard to tell what is happening. 
 
 
 ```{r}
@@ -63,16 +63,19 @@ So let's run a pairwise Wilcoxon test:
 ```{r}
 pairwise.wilcox.test(data_50_runs$Score, data_50_runs$Search_method)
 ```
-
-All the differences are strongly significant, with $p<2^{-16}$ in each case. Note, however, that while `Random` is better than `HC_zero`, the median is about the same for the two, so we wouldn't expect _huge_ differences between then. Certainly the improvements in performance that we see with `HC_penalty` are much more interesting.
+The differences between random mutation and the crossover methods are significant. However, the differences between the various crossover methods, with and without additional mutation, are not significant. 
 
 ## How do things change by problem? Max evals?
 
-We saw earlier that there was some difference between the 20 and 200 item problems, because all the negative final results from `HC_penalty` were on 200 item problems. This plot shows the performance on all six problems, regardless of search method used:
+The following plot separates the data by problem. 
 
 ```{r}
+par(mar=c(9,5,0,0))
 plot(data_50_runs$Score ~ data_50_runs$Problem,
-     xlab="Searcher", ylab="Score")
+     xlab="", ylab="Score", las=2)
+
+
+data_50_runs$Score = data_50_runs %.% scale(data_50_runs$Score)
 ```
 
 There are clearly differences. Some, such as the much higher values on the rightmost boxplot, are likely at least partly because of differences in the maximum possible values of the problems. Others seem to be more about the difficulty of the problems; the second problem (`knapPI_11_200_1000_4`) has a lower median than several other problems despite having an apparently higher possible value, suggesting that it's harder than those problems (at least for these searchers).
