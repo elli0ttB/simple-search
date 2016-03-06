@@ -629,7 +629,6 @@ random-mutation,_20+3 knapPI_11_200_1000_4 100000 29 5100
 random-mutation,_20+3 knapPI_13_200_1000_4 100000 29 3637
 random-mutation,_20+3 knapPI_16_200_1000_4 100000 29 14669
 random-mutation,_20+3 knapPI_16_1000_1000_3 100000 29 -51941
-Search_method Problem Max_evals Run Score
 two-point-cross_without_mutation_20+3 knapPI_11_20_1000_4 100000 0 1400
 two-point-cross_without_mutation_20+3 knapPI_13_20_1000_4 100000 0 907
 two-point-cross_without_mutation_20+3 knapPI_16_20_1000_4 100000 0 2893
