@@ -1,0 +1,631 @@
+Search_method Problem Max_evals Run Score
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 0 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 0 889N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 0 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 0 4740N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 0 3637N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 0 13332N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 0 44449N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 0 1400N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 0 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 0 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 0 5140N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 0 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 0 15122N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 0 43257N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 0 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 0 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 0 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 0 5140N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 0 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 0 14055N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 0 -48714N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 1 1440N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 1 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 1 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 1 4820N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 1 3637N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 1 12009N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 1 44686N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 1 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 1 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 1 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 1 5180N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 1 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 1 14351N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 1 48872N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 1 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 1 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 1 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 1 4940N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 1 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 1 14121N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 1 -44239N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 2 1440N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 2 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 2 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 2 4740N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 2 3637N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 2 12379N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 2 44611N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 2 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 2 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 2 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 2 5060N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 2 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 2 15284N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 2 52808N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 2 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 2 889N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 2 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 2 5060N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 2 3663N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 2 13975N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 2 -47854N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 3 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 3 890N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 3 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 3 4860N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 3 3637N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 3 12113N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 3 45618N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 3 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 3 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 3 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 3 5180N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 3 3680N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 3 14470N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 3 50140N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 3 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 3 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 3 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 3 5060N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 3 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 3 14782N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 3 -51852N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 4 1440N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 4 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 4 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 4 4980N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 4 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 4 11778N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 4 45802N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 4 1400N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 4 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 4 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 4 5100N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 4 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 4 15567N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 4 52072N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 4 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 4 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 4 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 4 5020N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 4 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 4 13842N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 4 -45074N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 5 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 5 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 5 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 5 4660N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 5 3628N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 5 12473N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 5 47350N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 5 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 5 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 5 2886N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 5 5180N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 5 3680N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 5 15331N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 5 46385N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 5 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 5 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 5 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 5 4980N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 5 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 5 14969N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 5 -44814N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 6 1440N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 6 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 6 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 6 4940N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 6 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 6 11915N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 6 46743N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 6 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 6 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 6 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 6 5180N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 6 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 6 14373N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 6 51887N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 6 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 6 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 6 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 6 5060N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 6 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 6 13495N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 6 -44569N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 7 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 7 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 7 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 7 4780N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 7 3637N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 7 11940N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 7 43533N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 7 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 7 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 7 2864N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 7 5140N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 7 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 7 15418N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 7 52595N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 7 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 7 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 7 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 7 5020N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 7 3663N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 7 14258N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 7 -47072N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 8 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 8 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 8 2682N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 8 4580N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 8 3637N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 8 12885N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 8 39684N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 8 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 8 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 8 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 8 5180N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 8 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 8 14340N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 8 49807N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 8 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 8 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 8 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 8 5060N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 8 3663N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 8 14349N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 8 -48923N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 9 1440N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 9 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 9 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 9 4580N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 9 3663N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 9 13006N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 9 44236N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 9 1400N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 9 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 9 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 9 5060N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 9 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 9 15278N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 9 -17047N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 9 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 9 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 9 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 9 5140N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 9 3663N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 9 14550N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 9 -48940N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 10 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 10 889N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 10 2557N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 10 4820N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 10 3637N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 10 12768N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 10 43531N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 10 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 10 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 10 2886N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 10 5140N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 10 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 10 14817N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 10 45269N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 10 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 10 890N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 10 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 10 5100N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 10 3620N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 10 15204N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 10 -48726N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 11 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 11 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 11 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 11 4860N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 11 3637N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 11 11376N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 11 46070N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 11 1400N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 11 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 11 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 11 5140N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 11 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 11 15337N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 11 43088N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 11 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 11 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 11 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 11 5060N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 11 3620N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 11 14206N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 11 -47979N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 12 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 12 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 12 2593N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 12 4740N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 12 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 12 12187N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 12 41596N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 12 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 12 889N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 12 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 12 5100N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 12 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 12 15390N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 12 47570N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 12 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 12 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 12 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 12 5100N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 12 3663N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 12 14259N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 12 -49790N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 13 1440N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 13 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 13 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 13 4820N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 13 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 13 12778N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 13 45749N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 13 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 13 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 13 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 13 5140N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 13 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 13 15170N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 13 -17669N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 13 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 13 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 13 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 13 5100N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 13 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 13 13863N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 13 -47967N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 14 1440N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 14 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 14 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 14 4820N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 14 3628N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 14 13692N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 14 46024N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 14 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 14 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 14 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 14 5140N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 14 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 14 15338N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 14 44175N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 14 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 14 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 14 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 14 5100N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 14 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 14 13478N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 14 -49950N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 15 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 15 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 15 2682N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 15 4980N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 15 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 15 13082N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 15 43136N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 15 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 15 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 15 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 15 5180N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 15 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 15 15225N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 15 51852N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 15 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 15 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 15 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 15 5020N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 15 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 15 13788N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 15 -50544N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 16 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 16 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 16 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 16 5060N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 16 3663N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 16 11673N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 16 45940N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 16 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 16 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 16 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 16 5020N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 16 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 16 15299N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 16 49135N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 16 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 16 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 16 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 16 5060N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 16 3663N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 16 14690N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 16 -50237N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 17 1440N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 17 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 17 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 17 4820N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 17 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 17 13564N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 17 42377N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 17 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 17 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 17 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 17 4980N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 17 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 17 15454N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 17 48388N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 17 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 17 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 17 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 17 5140N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 17 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 17 13971N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 17 -47845N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 18 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 18 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 18 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 18 5020N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 18 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 18 11810N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 18 45557N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 18 1400N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 18 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 18 2864N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 18 5140N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 18 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 18 15519N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 18 53713N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 18 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 18 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 18 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 18 5060N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 18 3620N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 18 13678N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 18 -49161N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 19 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 19 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 19 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 19 4820N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 19 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 19 12708N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 19 46286N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 19 1400N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 19 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 19 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 19 5100N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 19 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 19 15028N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 19 50508N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 19 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 19 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 19 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 19 5100N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 19 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 19 14670N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 19 -46171N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 20 1440N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 20 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 20 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 20 4840N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 20 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 20 12849N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 20 44974N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 20 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 20 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 20 2886N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 20 5180N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 20 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 20 15484N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 20 53115N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 20 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 20 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 20 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 20 5020N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 20 3663N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 20 14522N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 20 -50805N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 21 1440N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 21 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 21 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 21 4540N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 21 3628N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 21 12674N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 21 41509N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 21 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 21 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 21 2864N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 21 5180N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 21 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 21 15076N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 21 49130N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 21 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 21 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 21 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 21 5060N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 21 3620N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 21 13732N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 21 -48583N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 22 1320N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 22 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 22 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 22 4680N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 22 3637N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 22 12629N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 22 47174N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 22 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 22 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 22 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 22 5100N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 22 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 22 14769N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 22 45270N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 22 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 22 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 22 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 22 5060N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 22 3620N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 22 14754N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 22 -46953N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 23 1320N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 23 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 23 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 23 5020N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 23 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 23 12028N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 23 47079N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 23 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 23 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 23 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 23 5140N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 23 3680N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 23 15216N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 23 51468N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 23 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 23 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 23 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 23 5060N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 23 3663N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 23 14104N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 23 -45695N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 24 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 24 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 24 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 24 4660N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 24 3637N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 24 12626N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 24 43751N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 24 1400N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 24 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 24 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 24 5180N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 24 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 24 15185N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 24 52338N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 24 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 24 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 24 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 24 5020N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 24 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 24 13780N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 24 -46873N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 25 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 25 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 25 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 25 4940N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 25 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 25 12156N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 25 47284N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 25 1400N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 25 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 25 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 25 5180N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 25 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 25 15629N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 25 50802N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 25 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 25 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 25 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 25 5100N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 25 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 25 14357N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 25 -50310N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 26 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 26 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 26 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 26 4940N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 26 3637N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 26 11565N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 26 45746N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 26 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 26 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 26 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 26 5180N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 26 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 26 15056N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 26 46346N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 26 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 26 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 26 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 26 4980N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 26 3663N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 26 14698N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 26 -49302N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 27 1440N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 27 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 27 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 27 4860N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 27 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 27 11324N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 27 45641N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 27 1400N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 27 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 27 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 27 5180N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 27 3637N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 27 14801N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 27 50451N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 27 1400N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 27 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 27 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 27 5060N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 27 3663N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 27 15049N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 27 -48560N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 28 1400N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 28 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 28 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 28 4820N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 28 3637N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 28 11182N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 28 43776N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 28 1400N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 28 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 28 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 28 5060N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 28 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 28 15243N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 28 45856N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 28 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 28 907N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 28 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 28 5020N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 28 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 28 13929N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 28 -50068N
+two-point-cross with mutation 20+3 knapPI_11_20_1000_4 100000 29 1240N
+two-point-cross with mutation 20+3 knapPI_13_20_1000_4 100000 29 907N
+two-point-cross with mutation 20+3 knapPI_16_20_1000_4 100000 29 2893N
+two-point-cross with mutation 20+3 knapPI_11_200_1000_4 100000 29 4660N
+two-point-cross with mutation 20+3 knapPI_13_200_1000_4 100000 29 3620N
+two-point-cross with mutation 20+3 knapPI_16_200_1000_4 100000 29 13180N
+two-point-cross with mutation 20+3 knapPI_16_1000_1000_3 100000 29 43599N
+uniform-crossover, no mutation 20+3 knapPI_11_20_1000_4 100000 29 1440N
+uniform-crossover, no mutation 20+3 knapPI_13_20_1000_4 100000 29 907N
+uniform-crossover, no mutation 20+3 knapPI_16_20_1000_4 100000 29 2893N
+uniform-crossover, no mutation 20+3 knapPI_11_200_1000_4 100000 29 5140N
+uniform-crossover, no mutation 20+3 knapPI_13_200_1000_4 100000 29 3663N
+uniform-crossover, no mutation 20+3 knapPI_16_200_1000_4 100000 29 15358N
+uniform-crossover, no mutation 20+3 knapPI_16_1000_1000_3 100000 29 47615N
+random-mutation, 20+3 knapPI_11_20_1000_4 100000 29 1440N
+random-mutation, 20+3 knapPI_13_20_1000_4 100000 29 890N
+random-mutation, 20+3 knapPI_16_20_1000_4 100000 29 2893N
+random-mutation, 20+3 knapPI_11_200_1000_4 100000 29 5100N
+random-mutation, 20+3 knapPI_13_200_1000_4 100000 29 3637N
+random-mutation, 20+3 knapPI_16_200_1000_4 100000 29 14669N
+random-mutation, 20+3 knapPI_16_1000_1000_3 100000 29 -51941N

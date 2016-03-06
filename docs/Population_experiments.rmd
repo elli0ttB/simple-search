@@ -1,5 +1,5 @@
 ---
-title: "Knapsack experiments sample write-up"
+title: "Knapsack experiments write-up"
 author: "Molly Grove and Elliott Beach"
 date: "March 5, 2016"
 output: 
@@ -7,21 +7,23 @@ output:
     toc: true
 ---
 
-_This is an example of the kind of write-up that I'm looking for on this first set of experiments. You don't need to duplicate this exactly by any means, but I'm hoping this will give you a sense of what we're looking for. You should at a minimum describe what search methods you used and why, as well as analyzing and discussing your results. You don't need to "win" here, so it's totally OK if your analysis ends up being something of the form "Well, that didn't work very well", but I do really want you to think about what's happening in your data and make some effort to explain and understand what you're seeing._
-
 # Introduction
 
-In this set of experiments I explore the performance of three different search techniques on a set of six knapsack problems, with two different values for the maximum number of tries (i.e., the maximum number of evaluated answers).
+In this lab, we used three different population-based algorithms to find approximations for seven knapsack problems. 
 
-One search method is simple random search (labelled `Random` in the results), which generated `max-tries` different random answers and returns the best from that pool. The other two are both simple hill-climbers that start with a randomly generated answer, and then repeatedly mutate the best answer found so far, keeping the better of the original and the tweaked answer at each step. The two differ in how they score an answer. The first (labelled `HC_zero` below) gives an answer that is over-capacity a score of 0, while the second (labelled `HC_penalty`) gives an over-capacity answer a score that is the negative of that answer's total weight. The hope was that the second approach would provide a gradiant for answers that were over capacity, which would help the hill-climber find its way out of that large space of over-capacity solutions into the space of "legal" answers.
+For each iteration, our algorithm starts with a population of 100 and generates 300 children using one of three algorithms: mutation only, uniform crossover, and two-point crossover. The algorithm then combines all 400 answers (300 children and 100 parents) and chooses the best 100. 
 
-My mutation operator uses a common approach in genetic algorithms of flipping a bit with probability $1/N$ where $N$ is the length of the bit string. Thus we'll flip bits with a probability $1/20$ for a bitstring of length 20 (i.e., a knapsack problem with 20 items), and with probability $1/200$ for a bitstring of length 20. This means that we'll flip one bit on average, but sometimes flip several, and sometimes flip none. (In the context of a hill climber, flipping zero bits is wasteful and pointless, so in retrospect I probably should have ensured that I flipped at least _one_ bit. When we get to genetic algorithms in a bit and have crossover as well as mutation, sometimes having zero flipped bits will make sense.)
+The first algorithm for generating children uses only random mutation, with no crossover. The algorithm uses Nic's mutation method of starting with an answer and flipping each bit in :choices with probability of 1/n, where n is the length of the list. Flipping a bit adds or removes an item from the knapsack. 
 
-Half of these runs use 1,000 `max-tries`, while the other half use 10,000. I'm pretty sure even more tries would help, especially on the larger problems, but my goal here was more to assess the impact relative performance of the three search techniques rather than try to optimally solve the problems, so I capped it at 10,000 so I wouldn't spend forever generating data.
+The other two algorithms for generating children use crossover. We use tournament selection to choose the two parents, meaning that for each parent, we randomly choose two answers and use the one with the highest score as the parent. Unlike traditional crossover methods, our crossover methods generate only one child. For each crossover method, we tried regular crossover and combining crossover with mutating each child with a probability of 1/10. 
+
+The second algorithm for generating children uses uniform crossover. It starts with two parent answers and loops through the :choices lists, randomly choosing which bit to use for the child answer. 
+
+The third algorithm uses two-point crossover, which takes the first _m_ bits from the first parent's :choices list, the bits from _m_ to _n_ from the second parent, and the rest from the third parent to generate a child's :choices list. 
 
 # Experimental setup
 
-I applied each combination of these 3 searchers and two values of `max-tries` to fairly randomly chosen knapsack problems:
+We used population sizes of 100 with 30 repetitions and 100,000 iterations on the following problems:
 
 * `knapPI_11_20_1000_4`
 * `knapPI_13_20_1000_4` 
@@ -29,12 +31,9 @@ I applied each combination of these 3 searchers and two values of `max-tries` to
 * `knapPI_11_200_1000_4`
 * `knapPI_13_200_1000_4`
 * `knapPI_16_200_1000_4`
+* `knapPI_16_1000_1000_3`
 
-(These names are abbreviated to, e.g., `k_11_20_4`, in diagrams below.) Half of these are 20 item problems, and half are 200 item problems. Ultimately we'll probably want to apply our techniques to larger problems, but again my goal here was to try to understand the differences between my three search techniques, so I really just wanted hard enough problems to expose those differences.
-
-I did 50 indepedent runs of each treatment on each problem, for a total of
-
-$$3 \times 2 \times 6 \times 50 = 1800 \textrm{ runs}$$
+(These names are abbreviated to, e.g., `11_20_1000_4`, in diagrams below.) We gathered data for random mutation, uniform crossover, uniform crossover with mutation, two-point crossover, and two point crossover with mutation. 
 
 # Results
 
@@ -43,10 +42,11 @@ $$3 \times 2 \times 6 \times 50 = 1800 \textrm{ runs}$$
 As we can see in the plot below, the hill-climber with penalized fitness (`HC_penalty`) sometimes returns negative scores, i.e., it doesn't always manage to "climb" out of the realm of illegal solutions with the given maximum number of tries.
 
 ```{r}
-data_50_runs <- read.csv("../data/data_50_runs_combined.txt", sep="")
+data_50_runs <- read.csv("../data/genetic/data", sep="")
 
+par(mar=c(12,7,2,2))
 plot(data_50_runs$Score ~ data_50_runs$Search_method,
-     xlab="Searcher", ylab="Score")
+     xlab="", ylab="Score", las=2)
 ```
 
 A quick check confirms that (a) there aren't too many such runs (28 in total) and (b) that all of them are on the 200 item problems.
@@ -58,6 +58,7 @@ unique(negs$Problem)
 ```
 
 Since we don't really care _how_ illegal our final solutions are, I made a new column (`Non_negative_score`) that has negative scores converted to zeros. This gives us a plot that is arguably a more "sensible" comparison than the one with the negative values.
+
 
 ```{r}
 data_50_runs$Non_negative_score = ifelse(data_50_runs$Score<0, 0, data_50_runs$Score)
