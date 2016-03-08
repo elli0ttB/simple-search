@@ -42,16 +42,82 @@ We used population sizes of 100 with 30 repetitions and 100,000 iterations on th
 The following is a plot comparing the scores of the search algorithms over all problems. 
 
 ```{r}
-data_50_runs <- read.csv("../data/genetic/data", sep="")
 
+data_50_runs <- read.csv("../data/genetic/data", sep="")
+data_50_runs$Non_negative_score = ifelse(data_50_runs$Score<0, 0, data_50_runs$Score)
+
+k11_20 = subset(data_50_runs,data_50_runs$Problem == "11_20_1000_4")
+k13_20 = subset(data_50_runs,data_50_runs$Problem == "13_20_1000_4")
+k16_20 = subset(data_50_runs,data_50_runs$Problem == "16_20_1000_4")
+k11_200 = subset(data_50_runs,data_50_runs$Problem == "11_200_1000_4")
+k13_200 = subset(data_50_runs,data_50_runs$Problem == "13_200_1000_4")
+k16_200 = subset(data_50_runs,data_50_runs$Problem == "16_200_1000_4")
+k16_1000 = subset(data_50_runs,data_50_runs$Problem == "16_1000_1000_3")
+
+k20 = rbind (k11_20,k13_20,k16_20)
+k200 = rbind (k11_200,k13_200,k16_200)
+
+k11_20s = subset(data_50_runs,data_50_runs$Problem == "11_20_1000_4")
+k13_20s = subset(data_50_runs,data_50_runs$Problem == "13_20_1000_4")
+k16_20s = subset(data_50_runs,data_50_runs$Problem == "16_20_1000_4")
+k11_200s = subset(data_50_runs,data_50_runs$Problem == "11_200_1000_4")
+k13_200s = subset(data_50_runs,data_50_runs$Problem == "13_200_1000_4")
+k16_200s = subset(data_50_runs,data_50_runs$Problem == "16_200_1000_4")
+k16_1000s = subset(data_50_runs,data_50_runs$Problem == "16_1000_1000_3")
+
+k11_20s$Score = scale(k11_20s$Score)
+k13_20s$Score = scale(k13_20s$Score)
+k16_20s$Score = scale(k16_20s$Score)
+k11_200s$Score = scale(k11_200s$Score)
+k13_200s$Score = scale(k13_200s$Score)
+k16_200s$Score = scale(k16_200s$Score)
+k16_1000s$Score = scale(k16_1000s$Score)
+
+data_50_runs_scaled = rbind(k11_20s,k13_20s,k16_20s,k11_200s,k13_200s,k16_200s,k16_1000s)
 par(mar=c(12,7,0,0))
+
+
 plot(data_50_runs$Score ~ data_50_runs$Search_method,
      xlab="", ylab="Score", las=2)
 ```
+This chart is not supremely helpful, but it does show the data as the later wilcoxon test will run on it. With large differences between problems, simply comparing scores on all of the problems combined does not paint a clear picture.
+```{r}
+plot(data_50_runs_scaled$Score ~ data_50_runs_scaled$Search_method,
+     xlab="", ylab="Score", las=2)
+```
+The scaled data gives a clearer picture of the situation. Overall, uniform crossover performed the best. The mutation rates made little differnce. This is likely because we had such a low rate
+of mutation. The very low rates of mutation occuring in biological reproduction apparently do not carry over well into the solving knapsack problems.
+```{r}
+plot(k11_20$Score ~ k11_20$Search_method,xlab="", ylab="Score", las=2)
+```
+```{r}
+plot(k13_20$Score ~ k13_20$Search_method,xlab="", ylab="Score", las=2)
+```
+```{r}
+plot(k16_20$Score ~ k16_20$Search_method,xlab="", ylab="Score", las=2)
+```
+Apparently the 20-item problems were far easier than the more complex problems, with each algorithm quickly finding the optimal solution. However, on problem 13_20_1000_4, two-point crossover was unable to 
+to find the same solution random-mutation and uniform crossover were able to generate.
+```{r}
+plot(k11_200$Score ~ k11_200$Search_method,xlab="", ylab="Score", las=2)
+```
 
-The plot shows that uniform crossover and two-point crossover were better than random mutation. However, the scores in the various problems were so different that it is hard to tell what is happening. 
+```{r}
+plot(k13_200$Score ~ k13_200$Search_method,xlab="", ylab="Score", las=2)
+```
 
+```{r}
+plot(k16_200$Score ~ k16_200$Search_method,xlab="", ylab="Score", las=2)
+```
+ON the 200 item problems, two-point-crossover was clearly inferior to uniform crossover. The max score for two-point crossover was lower than the median score for uniform crossover in each problem.
+```{r}
+k16_1000$Non_negative_score = ifelse(k16_1000$Score<0, 0, k16_1000$Score)
+plot(k16_1000$Non_negative_score ~ k16_1000$Search_method,xlab="", ylab="Score (Negatives discarded", las=2)
+```
 
+Random mutation performed terribly for the 1000 item problem, and was never able to get a positive score. This would probably occur because the number of bits changed on average in random mutation is just one, while either crossover method can conduct a much deeper search of the problem space over fewer generations when scores can be easily improved. In fact, as we had a population of size of 100, over 100,000 evaluations, with each batch of children requiring gneration 300 answers, the maximum number of generations possible would be 100,000 / 300 = 333 generations. This explains why no problem was ever able to gain a positive score. Again, uniform crossover consistently produced better results than two point crossover.
+
+plot(k11_20$Score ~ k11_20$Search_method,xlab="", ylab="Score", las=2 )
 ```{r}
 negs <- subset(data_50_runs, Score<0)
 nrow(negs)
@@ -62,6 +128,8 @@ So let's run a pairwise Wilcoxon test:
 
 ```{r}
 pairwise.wilcox.test(data_50_runs$Score, data_50_runs$Search_method)
+
+pairwise.wilcox.test(data_50_runs_scaled$Score, data_50_runs_scaled$Search_method)
 ```
 The differences between random mutation and the crossover methods are significant. However, the differences between the various crossover methods, with and without additional mutation, are not significant. 
 
@@ -70,15 +138,19 @@ The differences between random mutation and the crossover methods are significan
 The following plot separates the data by problem. 
 
 ```{r}
+data_50_runs$Problem = factor(data_50_runs$Problem, c("11_20_1000_4", "13_20_1000_4", "16_20_1000_4", "11_200_1000_4", "13_200_1000_4", "16_200_1000_4", "16_1000_1000_3"))
 par(mar=c(9,5,0,0))
 plot(data_50_runs$Score ~ data_50_runs$Problem,
-     xlab="", ylab="Score", las=2)
+     xlab="", ylab="Score (log scale)", las=2, log="y", ylim = c(500, 60000))
 
-
-data_50_runs$Score = data_50_runs %.% scale(data_50_runs$Score)
 ```
+data_50_runs$Score = data_50_runs %.% scale(data_50_runs$Score)
 
-There are clearly differences. Some, such as the much higher values on the rightmost boxplot, are likely at least partly because of differences in the maximum possible values of the problems. Others seem to be more about the difficulty of the problems; the second problem (`knapPI_11_200_1000_4`) has a lower median than several other problems despite having an apparently higher possible value, suggesting that it's harder than those problems (at least for these searchers).
+
+There are clearly large differences between scores on problems, varying primarily based on the number of items. As problems become more difficult, the range of of scores increases, with the algorithms not
+always finding the same solution. Because scores are more correlated with problem than with algorithm, it makes sense to adjust for problem when doing statistical tests between
+
+Some, such as the much higher values on the rightmost boxplot, are likely at least partly because of differences in the maximum possible values of the problems.
 
 The following plot shows the performance broken out by essentially _all_ our independent variables: Searcher, problem, and `max-tries`.
 
@@ -86,7 +158,7 @@ The following plot shows the performance broken out by essentially _all_ our ind
 library("ggplot2")
 
 ggplot(data_50_runs, 
-       aes(x=factor(Max_evals), y=Score, group=Max_evals)) + 
+       aes(x=factor(Max_evals), y=log10(Non_negative_score), group=Max_evals)) + 
   geom_boxplot() + facet_grid(Search_method ~ Problem)
 ```
 
