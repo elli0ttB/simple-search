@@ -112,7 +112,11 @@ This indicates that despite the various differences between problems and differe
 
 # Conclusions
 
+Our low mutation rate was too low to have a substantial impact on the outcome of the searches. The population appears to have converged over time, especially in the case of two point crossover. Because we used the evolutionary strategy that included the parents and three groups of children, and selected the best out of that group, the answers with highest scores could propagate quickly, reducing diversity. Two point crossover in this case was less effective than uniform crossover. Normalizing all of the scores based on problem helped both in the visual display of the data and in producing effective statstical analysis. In all but one of the problems, 
+
+
 Based on these runs, it's clear that at least for these six problems `HC_penalty` is consistently as good or, in some cases, substantially better than the other two searchers tried here. This suggests that having a gradient to act on in the "illegal" part of the search space is a significant advantage on these problems.
+
 
 Have more evaluations does sometimes help, and occassionally quite a bit, but it often doesn't make a substantial difference, especially on the easier problems. So I might consider starting with just 1,000 evaluations in future explorations, saving the higher number of evaluations for when I've narrowed down the pool of search tools I really want to explore more deeply. (That would also be a good time to include some test problems with more items.)
 
