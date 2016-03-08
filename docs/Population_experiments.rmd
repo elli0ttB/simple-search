@@ -19,7 +19,7 @@ The other two algorithms for generating children use crossover. We use tournamen
 
 The second algorithm for generating children uses uniform crossover. It starts with two parent answers and loops through the :choices lists, randomly choosing which bit to use for the child answer. 
 
-The third algorithm uses two-point crossover, which takes the first _m_ bits from the first parent's :choices list, the bits from _m_ to _n_ from the second parent, and the rest from the third parent to generate a child's :choices list. 
+The third algorithm uses two-point crossover, which takes the first _m_ bits from the first parent's :choices list, the bits from _m_ to _n_ from the second parent, and the rest from the first parent to generate a child's :choices list. 
 
 # Experimental setup
 
@@ -43,27 +43,27 @@ The following is a plot comparing the scores of the search algorithms over all p
 
 ```{r}
 
-data_50_runs <- read.csv("../data/genetic/data", sep="")
-data_50_runs$Non_negative_score = ifelse(data_50_runs$Score<0, 0, data_50_runs$Score)
+data <- read.csv("../data/genetic/data", sep="")
+data$Non_negative_score = ifelse(data$Score<0, 0, data$Score)
 
-k11_20 = subset(data_50_runs,data_50_runs$Problem == "11_20_1000_4")
-k13_20 = subset(data_50_runs,data_50_runs$Problem == "13_20_1000_4")
-k16_20 = subset(data_50_runs,data_50_runs$Problem == "16_20_1000_4")
-k11_200 = subset(data_50_runs,data_50_runs$Problem == "11_200_1000_4")
-k13_200 = subset(data_50_runs,data_50_runs$Problem == "13_200_1000_4")
-k16_200 = subset(data_50_runs,data_50_runs$Problem == "16_200_1000_4")
-k16_1000 = subset(data_50_runs,data_50_runs$Problem == "16_1000_1000_3")
+k11_20 = subset(data,data$Problem == "11_20_1000_4")
+k13_20 = subset(data,data$Problem == "13_20_1000_4")
+k16_20 = subset(data,data$Problem == "16_20_1000_4")
+k11_200 = subset(data,data$Problem == "11_200_1000_4")
+k13_200 = subset(data,data$Problem == "13_200_1000_4")
+k16_200 = subset(data,data$Problem == "16_200_1000_4")
+k16_1000 = subset(data,data$Problem == "16_1000_1000_3")
 
 k20 = rbind (k11_20,k13_20,k16_20)
 k200 = rbind (k11_200,k13_200,k16_200)
 
-k11_20s = subset(data_50_runs,data_50_runs$Problem == "11_20_1000_4")
-k13_20s = subset(data_50_runs,data_50_runs$Problem == "13_20_1000_4")
-k16_20s = subset(data_50_runs,data_50_runs$Problem == "16_20_1000_4")
-k11_200s = subset(data_50_runs,data_50_runs$Problem == "11_200_1000_4")
-k13_200s = subset(data_50_runs,data_50_runs$Problem == "13_200_1000_4")
-k16_200s = subset(data_50_runs,data_50_runs$Problem == "16_200_1000_4")
-k16_1000s = subset(data_50_runs,data_50_runs$Problem == "16_1000_1000_3")
+k11_20s = subset(data,data$Problem == "11_20_1000_4")
+k13_20s = subset(data,data$Problem == "13_20_1000_4")
+k16_20s = subset(data,data$Problem == "16_20_1000_4")
+k11_200s = subset(data,data$Problem == "11_200_1000_4")
+k13_200s = subset(data,data$Problem == "13_200_1000_4")
+k16_200s = subset(data,data$Problem == "16_200_1000_4")
+k16_1000s = subset(data,data$Problem == "16_1000_1000_3")
 
 k11_20s$Score = scale(k11_20s$Score)
 k13_20s$Score = scale(k13_20s$Score)
@@ -73,123 +73,121 @@ k13_200s$Score = scale(k13_200s$Score)
 k16_200s$Score = scale(k16_200s$Score)
 k16_1000s$Score = scale(k16_1000s$Score)
 
-data_50_runs_scaled = rbind(k11_20s,k13_20s,k16_20s,k11_200s,k13_200s,k16_200s,k16_1000s)
+data_scaled = rbind(k11_20s,k13_20s,k16_20s,k11_200s,k13_200s,k16_200s,k16_1000s)
 par(mar=c(12,7,0,0))
 
 
-plot(data_50_runs$Score ~ data_50_runs$Search_method,
+plot(data$Score ~ data$Search_method,
      xlab="", ylab="Score", las=2)
 ```
-This chart is not supremely helpful, but it does show the data as the later wilcoxon test will run on it. With large differences between problems, simply comparing scores on all of the problems combined does not paint a clear picture.
+
+This chart is not supremely helpful, but it does show the data as the later Wilcoxon test will run on it. With large differences between problems, simply comparing scores on all of the problems combined does not paint a clear picture.
+
 ```{r}
-plot(data_50_runs_scaled$Score ~ data_50_runs_scaled$Search_method,
+par(mar=c(12,7,0,0))
+plot(data_scaled$Score ~ data_scaled$Search_method,
      xlab="", ylab="Score", las=2)
 ```
+
 The scaled data gives a clearer picture of the situation. Overall, uniform crossover performed the best. The mutation rates made little differnce. This is likely because we had such a low rate
-of mutation. The very low rates of mutation occuring in biological reproduction apparently do not carry over well into the solving knapsack problems.
+of mutation. The very low rates of mutation occuring in biological reproduction apparently do not carry over well into solving knapsack problems.
+
 ```{r}
+par(mar=c(12,7,0,0))
 plot(k11_20$Score ~ k11_20$Search_method,xlab="", ylab="Score", las=2)
 ```
+
 ```{r}
+par(mar=c(12,7,0,0))
 plot(k13_20$Score ~ k13_20$Search_method,xlab="", ylab="Score", las=2)
 ```
+
 ```{r}
+par(mar=c(12,7,0,0))
 plot(k16_20$Score ~ k16_20$Search_method,xlab="", ylab="Score", las=2)
 ```
-Apparently the 20-item problems were far easier than the more complex problems, with each algorithm quickly finding the optimal solution. However, on problem 13_20_1000_4, two-point crossover was unable to 
-to find the same solution random-mutation and uniform crossover were able to generate.
+
+Apparently the 20-item problems were far easier than the more complex problems, with each algorithm quickly finding the optimal solution. However, on problem 11_20_1000_4, two-point crossover was unable to find the same solution random-mutation and uniform crossover were able to generate.
+
 ```{r}
+par(mar=c(12,7,0,0))
 plot(k11_200$Score ~ k11_200$Search_method,xlab="", ylab="Score", las=2)
 ```
 
 ```{r}
+par(mar=c(12,7,0,0))
 plot(k13_200$Score ~ k13_200$Search_method,xlab="", ylab="Score", las=2)
 ```
 
+
 ```{r}
+par(mar=c(12,7,0,0))
 plot(k16_200$Score ~ k16_200$Search_method,xlab="", ylab="Score", las=2)
 ```
-ON the 200 item problems, two-point-crossover was clearly inferior to uniform crossover. The max score for two-point crossover was lower than the median score for uniform crossover in each problem.
+
+On the 200 item problems, two-point-crossover was clearly inferior to uniform crossover. The max score for two-point crossover was lower than the median score for uniform crossover in each problem.
+
 ```{r}
+par(mar=c(12,7,0,0))
 k16_1000$Non_negative_score = ifelse(k16_1000$Score<0, 0, k16_1000$Score)
 plot(k16_1000$Non_negative_score ~ k16_1000$Search_method,xlab="", ylab="Score (Negatives discarded", las=2)
 ```
 
-Random mutation performed terribly for the 1000 item problem, and was never able to get a positive score. This would probably occur because the number of bits changed on average in random mutation is just one, while either crossover method can conduct a much deeper search of the problem space over fewer generations when scores can be easily improved. In fact, as we had a population of size of 100, over 100,000 evaluations, with each batch of children requiring gneration 300 answers, the maximum number of generations possible would be 100,000 / 300 = 333 generations. This explains why no problem was ever able to gain a positive score. Again, uniform crossover consistently produced better results than two point crossover.
-
-plot(k11_20$Score ~ k11_20$Search_method,xlab="", ylab="Score", las=2 )
-```{r}
-negs <- subset(data_50_runs, Score<0)
-nrow(negs)
-unique(negs$Problem)
-```
+Random mutation performed terribly for the 1000 item problem, and was never able to get a positive score. This would probably occur because the number of bits changed on average in random mutation is just one, while either crossover method can conduct a much deeper search of the problem space over fewer generations when scores can be easily improved. In fact, as we had a population of size of 100, over 100,000 evaluations, with each batch of children requiring generation of 300 answers, the maximum number of generations possible would be 100,000 / 300 = 333 generations. This explains why no problem was ever able to gain a positive score. Again, uniform crossover consistently produced better results than two point crossover.
 
 So let's run a pairwise Wilcoxon test:
 
 ```{r}
-pairwise.wilcox.test(data_50_runs$Score, data_50_runs$Search_method)
+pairwise.wilcox.test(data$Score, data$Search_method)
 
-pairwise.wilcox.test(data_50_runs_scaled$Score, data_50_runs_scaled$Search_method)
+pairwise.wilcox.test(data_scaled$Score, data_scaled$Search_method)
 ```
 The differences between random mutation and the crossover methods are significant. However, the differences between the various crossover methods, with and without additional mutation, are not significant. 
 
-## How do things change by problem? Max evals?
+## Score by Problem
 
 The following plot separates the data by problem. 
 
 ```{r}
-data_50_runs$Problem = factor(data_50_runs$Problem, c("11_20_1000_4", "13_20_1000_4", "16_20_1000_4", "11_200_1000_4", "13_200_1000_4", "16_200_1000_4", "16_1000_1000_3"))
+data$Problem = factor(data$Problem, c("11_20_1000_4", "13_20_1000_4", "16_20_1000_4", "11_200_1000_4", "13_200_1000_4", "16_200_1000_4", "16_1000_1000_3"))
 par(mar=c(9,5,0,0))
-plot(data_50_runs$Score ~ data_50_runs$Problem,
+plot(data$Score ~ data$Problem,
      xlab="", ylab="Score (log scale)", las=2, log="y", ylim = c(500, 60000))
 
 ```
-data_50_runs$Score = data_50_runs %.% scale(data_50_runs$Score)
+data$Score = data %.% scale(data$Score)
 
 
 There are clearly large differences between scores on problems, varying primarily based on the number of items. As problems become more difficult, the range of of scores increases, with the algorithms not
-always finding the same solution. Because scores are more correlated with problem than with algorithm, it makes sense to adjust for problem when doing statistical tests between
+always finding the same solution. Because scores are more correlated with problem than with algorithm, it makes sense to adjust for problem when doing statistical tests between them.
 
 Some, such as the much higher values on the rightmost boxplot, are likely at least partly because of differences in the maximum possible values of the problems.
 
-The following plot shows the performance broken out by essentially _all_ our independent variables: Searcher, problem, and `max-tries`.
-
-```{r warning=FALSE}
-library("ggplot2")
-
-ggplot(data_50_runs, 
-       aes(x=factor(Max_evals), y=log10(Non_negative_score), group=Max_evals)) + 
-  geom_boxplot() + facet_grid(Search_method ~ Problem)
-```
-
-Reading this horizontally shows differences in the problems with, for example, `knapPI_16_200_1000_4` clearly having much higher values (at least for `HC_penalty`) than any of the other problems. Reading the columns vertically shows differences across searchers for a specific problem; it's clear for example that whatever advantage `HC_penalty` has is *much* stronger on the 200 item problems, where the other two searchers never get above zero.
-
+The following plot shows the performance broken out by all our independent variables: Searcher, problem.
 This also suggests that using 10,000 tries instead of 1,000 often didn't change things much. There are exceptions (e.g., `knapPI_16_2000_1000_4` on `HC_penalty` again), but typically the medians are quite close. This suggests that we might stick to 1,000 tries in future _initial_ explorations, and only switch to larger number of tries when we've identified which searchers, etc., we're especially interested in.
 
 ## Recursive partitioning
 
-The results in the previous plot separating things by problem, searcher, and `max-tries` suggests that the interactions of the independent variables is somewhat complex, so I used `rpart` to try to understand the relative importance of the many differences.
+The results in the previous plot separating things by problem, searcher, and `max-tries` suggests that the interactions of the independent variables is somewhat complex, so we used `rpart` to try to understand the relative importance of the many differences.
 
 ```{r}
 library("rpart")
 library("rpart.plot")
 
-rp <- rpart(Score ~ Search_method + Problem + Max_evals, data=data_50_runs)
+rp <- rpart(Score ~ Search_method + Problem, data=data_scaled)
+
 rp
 
-rpart.plot(rp, type=3, extra=100)
+par(mar=c(10,10,10,10))
+rpart.plot(rp, type=3, extra=100, uniform=TRUE)
 ```
 
-This indicates that despite the various differences between problems and different values of maximum evaluations, the choice of search searcher is the most important first-order difference, splitting on `HC_penalty` (on the right) vs. the other two searchers. After that split, though, the problems were the next most important factor along both branches. Focussing on the more interesting searcher (`HC_penalty`), `knapPI_16_200_1000_4` was "different" than the others, which isn't surprising given the substantially higher maximum values found on that problem than on the other problems. Once `rpart` is focusing on that particular problem, it also highlights the substantial difference between the 1,000 and 10,000 maximum evaluation runs.
+When problems are scaled, the search method is the most important predictor of score, in that uniform crossover always does better. Uniform crossover does comparatively better on the problems with 200 items. 
+Conversely, random mutation and two-point crossover performed worse on the 200 item problems. The next branching is between random search and two-point crossover, primarily because random search had no positive scores on the 1000 item problem. So, this tree is concordant with the box plot per individual problem in that uniform crossover was always at least tied for best among algorithms, but was especially superior on the 200 item problems. This may be because two point crossover was able to match uniform crossover on the easy problems, and was less hindered by a lack of diversity on the thousand item problem. 
 
 # Conclusions
 
-Our low mutation rate was too low to have a substantial impact on the outcome of the searches. The population appears to have converged over time, especially in the case of two point crossover. Because we used the evolutionary strategy that included the parents and three groups of children, and selected the best out of that group, the answers with highest scores could propagate quickly, reducing diversity. Two point crossover in this case was less effective than uniform crossover. Normalizing all of the scores based on problem helped both in the visual display of the data and in producing effective statstical analysis. In all but one of the problems, 
-
-
-Based on these runs, it's clear that at least for these six problems `HC_penalty` is consistently as good or, in some cases, substantially better than the other two searchers tried here. This suggests that having a gradient to act on in the "illegal" part of the search space is a significant advantage on these problems.
-
-
-Have more evaluations does sometimes help, and occassionally quite a bit, but it often doesn't make a substantial difference, especially on the easier problems. So I might consider starting with just 1,000 evaluations in future explorations, saving the higher number of evaluations for when I've narrowed down the pool of search tools I really want to explore more deeply. (That would also be a good time to include some test problems with more items.)
-
-Laslty, the facetted plot and the `rpart` analysis make it clear that I _really_ should normalize my data by dividing all my scores by the highest score found for a given problem. That would reduce effects caused by disproportionate maximum values for problems like `knapPI_16_200_1000_4`, and allow tools like `rpart` to focus on differences caused by the choice of searchers or maximum evaluations.
+Our low mutation rate was too low to have a substantial impact on the outcome of the searches. The population appears to have converged over time, especially in the case of two point crossover. Because we used the evolutionary strategy that included the parents and three groups of children, and selected the best out of that group, the answers with highest scores could propagate quickly, reducing diversity. Two point crossover in this case was less effective than uniform crossover. 
+The reason that two point crossover performed poorly in comparison to the other two algorithms is probably that the population lost diversity over time, to such an extent that random mutation found better results in every case except the hardest problem, 16_1000_1000_3. In that problem, finding solutions that had positive scores required more searching through solutions than random mutation was able to do. 
+At first, we tried to ensure diversity by requiring all solutions to be unique as they were generated, but this caused the answer-generating algorithm (in the crossover tournaments portion) to fail to find solutions with large
+numbers of evaluations, causing the program to hang. Some sort of compromise that would allow new answers to be generated while encouraging, but not enforcing, diversity would have been more effective.
