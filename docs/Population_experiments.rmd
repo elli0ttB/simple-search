@@ -42,16 +42,63 @@ We used population sizes of 100 with 30 repetitions and 100,000 iterations on th
 The following is a plot comparing the scores of the search algorithms over all problems. 
 
 ```{r}
+
 data_50_runs <- read.csv("../data/genetic/data", sep="")
 
+k11_20 = subset(data_50_runs,data_50_runs$Problem == "11_20_1000_4")
+k13_20 = subset(data_50_runs,data_50_runs$Problem == "13_20_1000_4")
+k16_20 = subset(data_50_runs,data_50_runs$Problem == "16_20_1000_4")
+k11_200 = subset(data_50_runs,data_50_runs$Problem == "11_200_1000_4")
+k13_200 = subset(data_50_runs,data_50_runs$Problem == "13_200_1000_4")
+k16_200 = subset(data_50_runs,data_50_runs$Problem == "16_200_1000_4")
+k16_1000 = subset(data_50_runs,data_50_runs$Problem == "16_1000_1000_3")
+
+k20 = rbind (k11_20,k13_20,k16_20)
+k200 = rbind (k11_200,k13_200,k16_200)
+
+k11_20s = subset(data_50_runs,data_50_runs$Problem == "11_20_1000_4")
+k13_20s = subset(data_50_runs,data_50_runs$Problem == "13_20_1000_4")
+k16_20s = subset(data_50_runs,data_50_runs$Problem == "16_20_1000_4")
+k11_200s = subset(data_50_runs,data_50_runs$Problem == "11_200_1000_4")
+k13_200s = subset(data_50_runs,data_50_runs$Problem == "13_200_1000_4")
+k16_200s = subset(data_50_runs,data_50_runs$Problem == "16_200_1000_4")
+k16_1000s = subset(data_50_runs,data_50_runs$Problem == "16_1000_1000_3")
+
+k11_20s$Score = scale(k11_20s$Score)
+k13_20s$Score = scale(k13_20s$Score)
+k16_20s$Score = scale(k16_20s$Score)
+k11_200s$Score = scale(k11_200s$Score)
+k13_200s$Score = scale(k13_200s$Score)
+k16_200s$Score = scale(k16_200s$Score)
+k16_1000s$Score = scale(k16_1000s$Score)
+
+data_50_runs_scaled = rbind(k11_20s,k13_20s,k16_20s,k11_200s,k13_200s,k16_200s,k16_1000s)
 par(mar=c(12,7,0,0))
+
 plot(data_50_runs$Score ~ data_50_runs$Search_method,
      xlab="", ylab="Score", las=2)
+plot(data_50_runs_scaled$Score ~ data_50_runs_scaled$Search_method,
+     xlab="", ylab="Score", las=2)
+
+plot(k11_20$Score ~ k11_20$Search_method,xlab="", ylab="Score", las=2)
+
+plot(k13_20$Score ~ k13_20$Search_method,xlab="", ylab="Score", las=2)
+
+plot(k16_20$Score ~ k16_20$Search_method,xlab="", ylab="Score", las=2)
+
+plot(k11_200$Score ~ k11_200$Search_method,xlab="", ylab="Score", las=2)
+
+plot(k13_200$Score ~ k13_200$Search_method,xlab="", ylab="Score", las=2)
+
+plot(k16_200$Score ~ k16_200$Search_method,xlab="", ylab="Score", las=2)
+
+plot(k16_1000$Score ~ k16_1000$Search_method,xlab="", ylab="Score", las=2)
+
 ```
 
 The plot shows that uniform crossover and two-point crossover were better than random mutation. However, the scores in the various problems were so different that it is hard to tell what is happening. 
 
-
+plot(k11_20$Score ~ k11_20$Search_method,xlab="", ylab="Score", las=2)
 ```{r}
 negs <- subset(data_50_runs, Score<0)
 nrow(negs)
@@ -61,7 +108,10 @@ unique(negs$Problem)
 So let's run a pairwise Wilcoxon test:
 
 ```{r}
+pairwise.wilcox.test(data_50_runs$Score, data_50_runs$Search_method, paired = TRUE)
 pairwise.wilcox.test(data_50_runs$Score, data_50_runs$Search_method)
+
+pairwise.wilcox.test(data_50_runs_scaled$Score, data_50_runs_scaled$Search_method)
 ```
 The differences between random mutation and the crossover methods are significant. However, the differences between the various crossover methods, with and without additional mutation, are not significant. 
 
@@ -74,9 +124,9 @@ par(mar=c(9,5,0,0))
 plot(data_50_runs$Score ~ data_50_runs$Problem,
      xlab="", ylab="Score", las=2)
 
-
-data_50_runs$Score = data_50_runs %.% scale(data_50_runs$Score)
 ```
+data_50_runs$Score = data_50_runs %.% scale(data_50_runs$Score)
+
 
 There are clearly differences. Some, such as the much higher values on the rightmost boxplot, are likely at least partly because of differences in the maximum possible values of the problems. Others seem to be more about the difficulty of the problems; the second problem (`knapPI_11_200_1000_4`) has a lower median than several other problems despite having an apparently higher possible value, suggesting that it's harder than those problems (at least for these searchers).
 
