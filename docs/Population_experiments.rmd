@@ -2,9 +2,11 @@
 title: "Knapsack experiments write-up"
 author: "Molly Grove and Elliott Beach"
 date: "March 5, 2016"
-output: 
+output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: true
+    toc: yes
 ---
 
 # Introduction
